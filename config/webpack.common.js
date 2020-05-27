@@ -4,12 +4,12 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    context: path.resolve(__dirname, 'src'),
+    context: path.resolve(__dirname, '../src'),
     entry: {
         main: './index.js'
     },
     output: {
-        path: path.join(__dirname, '/dist'),
+        path: path.join(__dirname, '../dist'),
         filename: 'js/[name].[contenthash].js'
     },
     optimization: {
@@ -35,7 +35,7 @@ module.exports = {
             },
             {
                 test: /\.(s*)css$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
+                use: [MiniCssExtractPlugin.loader, 'css-loader', { loader: 'postcss-loader', options: { config: { path: './config' } } }, 'sass-loader']
             },
             {
                 test: /\.(woff(2)?|ttf|eot)$/,

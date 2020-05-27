@@ -6,11 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run start:dev",
-    "start:dev": "webpack-dev-server --config webpack.dev.js --open",
-    "start:prod": "webpack-dev-server --config webpack.prod.js --open",
+    "start:dev": "webpack-dev-server --config config/webpack.dev.js --open",
+    "start:prod": "webpack-dev-server --config config/webpack.prod.js --open",
     "build": "npm run build:prod",
-    "build:dev": "webpack --config webpack.dev.js",
-    "build:prod": "webpack --config webpack.prod.js"
+    "build:dev": "webpack --config config/webpack.dev.js",
+    "build:prod": "webpack --config config/webpack.prod.js"
   },
   "keywords": [],
   "author": "",
