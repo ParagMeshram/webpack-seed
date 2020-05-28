@@ -5,6 +5,11 @@ module.exports = merge(common, {
     mode: 'development',
     devtool: 'eval-source-map',
     devServer: {
-        historyApiFallback: true
+        host: '0.0.0.0',
+        historyApiFallback: true,
+        overlay: {
+            warnings: true,
+            errors: true
+        },
     }
 });
