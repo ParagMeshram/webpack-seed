@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run start:dev",
-    "start:dev": "webpack-dev-server --config config/webpack.dev.js --open",
-    "start:prod": "webpack-dev-server --config config/webpack.prod.js --open",
+    "start:dev": "webpack-dev-server --config config/webpack.dev.js --colors --progress --watch",
+    "start:prod": "webpack-dev-server --config config/webpack.prod.js --colors --progress --watch",
     "build": "npm run build:prod",
     "build:dev": "webpack --config config/webpack.dev.js",
     "build:prod": "webpack --config config/webpack.prod.js"
@@ -24,6 +24,8 @@
     "@babel/preset-react": "^7.10.0",
     "autoprefixer": "^9.8.0",
     "babel-loader": "^8.1.0",
+    "browser-sync": "^2.26.7",
+    "browser-sync-webpack-plugin": "^2.2.2",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.5.3",
     "cssnano": "^4.1.10",
