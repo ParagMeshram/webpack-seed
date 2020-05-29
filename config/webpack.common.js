@@ -30,6 +30,12 @@ module.exports = {
     module: {
         rules: [
             {
+                enforce: 'pre',
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'eslint-loader',
+            },
+            {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
@@ -38,10 +44,37 @@ module.exports = {
             },
             {
                 test: /\.(s*)css$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader', { loader: 'postcss-loader', options: { config: { path: './config' } } }, 'sass-loader']
+                exclude: /node_modules/,
+                use: [{
+                    loader: MiniCssExtractPlugin.loader,
+                    options: {
+                        sourceMap: true
+                    }
+                },
+                {
+                    loader: 'css-loader',
+                    options: {
+                        sourceMap: true,
+                        //importLoaders: 2,
+                    },
+                },
+                {
+                    loader: 'postcss-loader',
+                    options: {
+                        config: { path: './config' },
+                        sourceMap: true,
+                    },
+                },
+                {
+                    loader: 'sass-loader',
+                    options: {
+                        sourceMap: true,
+                    },
+                }]
             },
             {
                 test: /\.(woff(2)?|ttf|eot)$/,
+                exclude: /node_modules/,
                 use: {
                     loader: 'file-loader',
                     options: {
@@ -53,6 +86,7 @@ module.exports = {
             },
             {
                 test: /\.pdf$/,
+                exclude: /node_modules/,
                 use: {
                     loader: 'file-loader',
                     options: {
@@ -64,6 +98,7 @@ module.exports = {
             },
             {
                 test: /\.(mp3|wav|wma|ogg)$/,
+                exclude: /node_modules/,
                 use: {
                     loader: 'file-loader',
                     options: {
@@ -75,6 +110,7 @@ module.exports = {
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/,
+                exclude: /node_modules/,
                 use: [
                     {
                         loader: 'url-loader',
@@ -90,6 +126,7 @@ module.exports = {
             },
             {
                 test: /\.(mp4|webm)$/,
+                exclude: /node_modules/,
                 use: {
                     loader: 'file-loader',
                     options: {
@@ -109,7 +146,7 @@ module.exports = {
             filename: 'index.html'
         }),
         new MiniCssExtractPlugin({
-            filename: 'styles/styles.[contenthash].css'
+            filename: 'styles/[name].[contenthash].css'
         })
     ]
 };
