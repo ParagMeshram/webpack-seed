@@ -1,7 +1,5 @@
 /node_modules
 /dist
-.idea
-.vscode
 .cache
 .eslintcache
 package-lock.json
